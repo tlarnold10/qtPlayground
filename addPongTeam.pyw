@@ -1,12 +1,14 @@
 import sys, psycopg2, pdb
 from PyQt5.QtWidgets import QDialog, QApplication
+import pymsgbox
 from addTeamUI import *
 class MyForm(QDialog):
 	def __init__(self):
 		super().__init__()
 		self.ui = Ui_Dialog()
 		self.ui.setupUi(self)
-		conn = psycopg2.connect(host="localhost",database="arnold",user="postgres",password="")
+		password = pymsgbox.prompt("Please enter the database password: ")
+		conn = psycopg2.connect(host="localhost",database="arnold",user="postgres",password=password)
 		curs = conn.cursor()
 		query = """
 		SELECT CONCAT(first_name, ' ', last_name)

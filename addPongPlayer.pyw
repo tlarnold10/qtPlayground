@@ -9,7 +9,7 @@ class MyForm(QDialog):
 		self.ui.pushButton.clicked.connect(self.addPlayer)
 		self.show()
 	def addPlayer(self):
-		conn = psycopg2.connect(host="localhost",database="arnold",user="postgres",password="snowlep")
+		conn = psycopg2.connect(host="localhost",database="arnold",user="postgres",password="")
 		curs = conn.cursor()
 		insertFirstName = self.ui.lineEdit.text()
 		insertLastName = self.ui.lineEdit_2.text()
